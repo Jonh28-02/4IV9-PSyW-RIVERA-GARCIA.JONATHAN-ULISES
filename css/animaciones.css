@@ -119,6 +119,15 @@
      text-align: center;
      justify-content: center;
  }
+ footer{
+     width: auto;
+     display: flex;
+     height: 50px;
+     background-color: wheat;
+     text-align: center;
+     justify-content: center;
+     
+ }
  
  nav{
      background-color: #b4b0b0ea;
@@ -247,7 +256,62 @@
 img{
     height: 200px;
     width: 200px;
+    display: flexbox;
+    margin: 1px;
+}
+
+
+.menuxd{
     display: flex;
+    justify-content:center;
+}
+
+.menuxd li{
+    margin-right: 70px;
+}
+
+.menuxd a{
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.menuxd a span{
+    transition: transform 0.2s ease-out;
+}
+
+.menuxd a span:first-child{
+    display: inline-block;
+    padding: 10px;
+}
+
+.menuxd a span:last-child{
+    position: absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    display:flex;
     align-items: center;
+    justify-content: center;
+    transform: translateX(-100%);
+}
+
+.menuxd i{
+    font-size: 30px;
+}
+
+.menuxd a:hover span:first-child{
+    transform: translateX(100%);
+}
+
+.menuxd a:hover span:last-child,
+.menuxd[data-animation] a:hover span:last-child{
+    transform: none;
+} 
+embed{
+    height: 200px;
+    width: 400px;
+    display: flexbox;
     margin: 1px;
 }
