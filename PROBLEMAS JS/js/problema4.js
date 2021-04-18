@@ -12,6 +12,7 @@ function validar(e){
      var cali3 = document.formulario.cal3.value;
      var caliEx = document.formulario.calEx.value;
      var caliTra = document.formulario.calTra.value;
+
      if(cali1==""||cali2==""||cali3==""||caliEx==""||caliTra==""){
          alert("Necesitas llenar todos los campos de texto");
          calcular.break();
@@ -22,7 +23,7 @@ function validar(e){
          document.formulario.cal2.value="";
          document.formulario.cal3.value="";
          document.formulario.calEx.value="";
-         document.formulario.calTra.value="";
+         document.formulario.calFinal.value="";
      }else{
          var count=0;
          for(var i=0;i<cali1.length;i++){
@@ -54,7 +55,8 @@ function validar(e){
                      count = 0;
                      for(var i=0;i<caliEx.length;i++){
                          if(caliEx.charAt(i)=="."){
-                             count+=1;
+                             count+=1.;
+                             
                          }
                      }
                      if(count>1){
@@ -85,5 +87,5 @@ function validar(e){
      document.formulario.cal3.value="";
      document.formulario.calEx.value="";
      document.formulario.calTra.value="";
-     document.formulario.calFinal.value="";
+     document.formulario.califFinal.value="";
  }
