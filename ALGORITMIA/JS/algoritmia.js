@@ -77,31 +77,110 @@ function problema1(){
  
 function problema3(){
 
-     let abc=["A","B","C","D","E","F","G","H","I","J","K","L","M","N", "Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-     var p3_input=document.querySelector('#p3-input').value;
-     var p3_array = p3_input.split(',');
+     var input = document.querySelector('#p3-input').value;
+     var arreglo = input.split(',');
  
-     for(var i = 0; i < p3_array.length; i++){
-         let cu=''
-         for(var j =0; j < p3_array.length; j++){
-             if(cu.indexOf(p3_array[i].charAt(j))==-1){
-             cu+=p3_array[i][j];
-             document.querySelector('#p3-output').textContent = 'Numero de palabras: ' + p3_array + ':' + cu.length;
-             }
+     var pocision = "";
+     var lnMayor = 0;
+     var lsMayor = "";
+ 
+     for (var i = 0 ; i < arreglo.length ; i++){
+         pocision = arreglo[i];
+ 
+         var lsSalida = Conteo(pocision.replace(" ",""));
+         var lasValores = lsSalida.split("|");
+         var lnLargo = parseInt(lasValores[0],10);
+ 
+         if(lnLargo > lnMayor){
+             lnMayor = lnLargo;
+             lsMayor = lsSalida;
          }
-         return cu;
+ 
+ 
      }
-     return p3_array;
+ 
+ 
+     document.querySelector("#p3-output").textContent = "PALABRA CON MAS CARACTERES: " + lsMayor;
+ }
+ 
 
-     
-     
+function Conteo(elemento){
  
+     var diccionario = new Dictionary();
+     var lsLetras = "";
+     var lnCont = 0;
  
-}
+     for (var i = 0 ; i < elemento.length ; i++){
+ 
+         var caracter = elemento.substr(i,1);
+         console.log(caracter);
+         console.log(diccionario.has(caracter));
+         if(diccionario.has(caracter) == false){
+             diccionario.set(caracter,caracter);
+             lsLetras += caracter + ",";
+             lnCont++;
+         }
+     }
+  
+     return lnCont.toString() + "|" + lsLetras;
+ }
+class Dictionary {
+     constructor () {
+       this.items = {}
+     }
+     
+     has (key) {
+       return this.items.hasOwnProperty(key);	
+     }
+     
+     set (key, value) {
+       this.items[key] = value;
+     }
+     
+     remove (key) {
+       if (this.has(key)) {
+         delete this.items[key];
+         return true;
+       }
+   
+       return false;
+     }
+     
+     get (key) {
+       return this.has(key) ? this.items[key] : undefined;
+     }
+     
+     values () {
+       const values = []
+       for (let key in this.items) {
+         if (this.has(key)) {
+           values.push(this.items[key])
+         }
+       }
+       return values
+     }
+   
+     size () {
+       return Object.keys(this.items).length
+     }
+     
+     keys () {
+       const keys = []
+       for (let key in this.items) {
+           keys.push(keys)
+       }
+           return keys
+     }
+     
+     getItems () {
+       return this.items
+     }
+   }
+
 function validarn(e){
      var teclado = (document.all)?e.keyCode:e.which;
      if(teclado===8)return true;
      var patron=/[A-Z\,]/g;
      var prueba = String.fromCharCode(teclado);
      return patron.test(prueba);
-} 
+ }
