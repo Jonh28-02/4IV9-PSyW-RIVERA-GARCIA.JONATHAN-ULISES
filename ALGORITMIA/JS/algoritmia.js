@@ -80,27 +80,35 @@ function problema3(){
      var input = document.querySelector('#p3-input').value;
      var arreglo = input.split(',');
  
-     var pocision = "";
-     var lnMayor = 0;
-     var lsMayor = "";
+     var posicion = "";
+     var MI = 0;
+     var M2 = "";
+     var VALIDACIONES = /^[A-ZÑ]+$|^([A-ZÑ]+( *, *))+[A-ZÑ]+$|^[A-ZÑ]+( *, *)[A-ZÑ]+$/;
+
+    //valido casos    
+    if ( !VALIDACIONES.test(input)){
+        alert("Ingrese palabras PAABRAS EN MAYUSCULAS");
+        return;
+    }
  
      for (var i = 0 ; i < arreglo.length ; i++){
-         pocision = arreglo[i];
+         posicion = arreglo[i];
  
-         var lsSalida = Conteo(pocision.replace(" ",""));
-         var lasValores = lsSalida.split("|");
-         var lnLargo = parseInt(lasValores[0],10);
+         var Salida = Conteo(posicion.replace(" ",""));
+         var lasValores = Salida.split("|");
+         var Largo = parseInt(lasValores[0],10);
  
-         if(lnLargo > lnMayor){
-             lnMayor = lnLargo;
-             lsMayor = lsSalida;
+         if(Largo > MI){
+             MI = Largo;
+             M2 = Salida;
          }
  
  
      }
  
- 
-     document.querySelector("#p3-output").textContent = "PALABRA CON MAS CARACTERES: " + lsMayor;
+     validarn(input)
+     document.querySelector("#p3-output").textContent = "PALABRA CON MAS CARACTERES: " + M2;
+     
  }
  
 
@@ -122,7 +130,7 @@ function Conteo(elemento){
          }
      }
   
-     return lnCont.toString() + "|" + lsLetras;
+     return lnCont.toString() + "(" + lsLetras + ")";
  }
 class Dictionary {
      constructor () {
