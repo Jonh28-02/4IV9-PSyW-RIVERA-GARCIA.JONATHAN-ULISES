@@ -109,7 +109,10 @@ public class Modificar extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet Modificar</title>");            
             out.println("</head>");
-            out.println("<body>");
+            out.println("<link rel='stylesheet' href='css/style.css'>");
+            out.println("<script src='js/validar.js'></script>");
+            out.println("</head>");
+            out.println("<body class='body2'>");
              out.println("<h1>Tabla del Registro de Usuarios</h1>"
                     + "<table border='2'>"
                     + "<thead>"
@@ -152,22 +155,22 @@ public class Modificar extends HttpServlet {
                             +"<form name='formularioModificar' method='post' action='Modificar2'>"
                             +"<h2>Modifique los datos</h2>"
                             +"<h2>ID</h2>"
-                     +"<input type='text' value='"+id+"' name ='id_modificar'>"
+                     +"<input type='text' value='"+id+"' name ='id_modificar' >"
                              +"<br>"
                             +"<h2>Nombre</h2>"
-                     +"<input type='text' value='"+nom+"' name ='nom_modificar'>"
+                     +"<input type='text' value='"+nom+"' name ='nom_modificar' onkeypress='return validarabc(event)'>"
                              +"<br>"
                               +"<h2>Apellido Paterno</h2>"
-                     +"<input type='text' value='"+appat+"' name ='appat_modificar'>"
+                     +"<input type='text' value='"+appat+"' name ='appat_modificar' onkeypress='return validarabc(event)'>"
                              +"<br>"
                               +"<h2>Apellido Materno</h2>"
-                     +"<input type='text' value='"+apmat+"' name ='apmat_modificar'>"
+                     +"<input type='text' value='"+apmat+"' name ='apmat_modificar' onkeypress='return validarabc(event)'>"
                              +"<br>"
                               +"<h2>Edad</h2>"
-                     +"<input type='text' value='"+edad+"' name ='edad_modificar'>"
+                     +"<input type='number' value='"+edad+"' name ='edad_modificar' onkeypress='return validarn(event)>"
                              +"<br>"
                               +"<h2>Correo</h2>"
-                     +"<input type='text' value='"+correo+"' name ='correo_modificar'>"
+                     +"<input type='email' value='"+correo+"' name ='correo_modificar'>"
                              +"<br>"
                              +"<br>"
                              +"<input type='submit' value='Modificar Registro'>"
@@ -185,6 +188,7 @@ public class Modificar extends HttpServlet {
                 System.out.println("Error al realizar la modificacion");
                 System.out.println(e.getMessage());
                 System.out.println(e.getStackTrace());
+            
             
             }
              
